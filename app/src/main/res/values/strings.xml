@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="title">Калькулятор времени</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="multiply">*</string>
+    <string name="divide">/</string>
+    <string name="mod">%</string>
+    <string name="resultText">Результат</string>
+    <string name="exitText">Выход</string>
+    <string name="clearText">Очистить</string>
+</resources>
