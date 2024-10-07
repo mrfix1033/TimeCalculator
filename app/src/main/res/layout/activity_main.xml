@@ -11,9 +11,8 @@
         android:id="@+id/toolbarMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/wiolet"
-        tools:ignore="MissingConstraints"
-        />
+        android:background="@color/toolbarColor"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/titleTV"
@@ -68,6 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/buttonColor"
             android:text="@string/plus"
             android:textSize="22sp" />
 
@@ -80,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/buttonColor"
             android:text="@string/minus"
             android:textSize="22sp" />
     </LinearLayout>

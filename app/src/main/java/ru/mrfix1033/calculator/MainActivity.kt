@@ -32,8 +32,10 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbarMain)
         title = resources.getString(R.string.title)
-        toolbarMain.subtitle = "1.0.0"
+        toolbarMain.subtitle = "v1.0.0"
         toolbarMain.setLogo(R.drawable.ic_calculate)
+
+        resultTextView.setTextColor(getColor(R.color.black))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             R.id.clearMenuMain -> {
                 firstOperandET.text.clear()
                 secondOperandET.text.clear()
+                resultTextView.setTextColor(getColor(R.color.black))
                 resultTextView.text = "Результат"
                 val toastNotification = Toast.makeText(
                     applicationContext,
@@ -54,10 +57,13 @@ class MainActivity : AppCompatActivity() {
                 )
                 toastNotification.show()
             }
+
             R.id.exitMenuMain -> {
-                Toast.makeText(applicationContext,
-                    "Завершение...",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Приложение закрыто",
+                    Toast.LENGTH_SHORT
+                ).show()
                 finish()
             }
         }
@@ -78,17 +84,25 @@ class MainActivity : AppCompatActivity() {
             } catch (exception: IllegalArgumentException) {
                 exception.message
             }
+
             minusButton -> try {
                 operation.minus()
             } catch (exception: IllegalArgumentException) {
                 exception.message
             }
+
             else -> {
                 resultTextView.text = "Некорректная операция"
                 return
             }
         }
+        resultTextView.setTextColor(getColor(R.color.textColor))
         resultTextView.text = result
+        Toast.makeText(
+            applicationContext,
+            result,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun setVariables() {
