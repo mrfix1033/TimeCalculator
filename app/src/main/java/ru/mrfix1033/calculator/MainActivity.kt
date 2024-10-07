@@ -14,9 +14,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var toolbarMain: Toolbar
 
-    private lateinit var clearButton: Button
-    private lateinit var exitButton: Button
-
     private lateinit var firstOperandET: EditText
     private lateinit var secondOperandET: EditText
 
@@ -82,21 +79,8 @@ class MainActivity : AppCompatActivity() {
         resultTextView.text = result
     }
 
-    private fun onClickOnUtilsButton(v: View?) = when (v) {
-        clearButton -> {
-            firstOperandET.text.clear()
-            secondOperandET.text.clear()
-            resultTextView.text = "Результат"
-        }
-        exitButton -> finish()
-        else -> resultTextView.text = "Некорректная операция"
-    }
-
     private fun setVariables() {
         toolbarMain = findViewById(R.id.toolbarMain)
-
-        clearButton = findViewById(R.id.clearButton)
-        exitButton = findViewById(R.id.exitButton)
 
         firstOperandET = findViewById(R.id.firstOperandET)
         secondOperandET = findViewById(R.id.secondOperandET)
@@ -108,9 +92,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setClickListeners() {
-        clearButton.setOnClickListener(::onClickOnUtilsButton)
-        exitButton.setOnClickListener(::onClickOnUtilsButton)
-
         plusButton.setOnClickListener(::onClickOnOperators)
         minusButton.setOnClickListener(::onClickOnOperators)
     }
