@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 
@@ -46,8 +47,19 @@ class MainActivity : AppCompatActivity() {
                 firstOperandET.text.clear()
                 secondOperandET.text.clear()
                 resultTextView.text = "Результат"
+                val toastNotification = Toast.makeText(
+                    applicationContext,
+                    "Данные очищены",
+                    Toast.LENGTH_LONG
+                )
+                toastNotification.show()
             }
-            R.id.exitMenuMain -> finish()
+            R.id.exitMenuMain -> {
+                Toast.makeText(applicationContext,
+                    "Завершение...",
+                    Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
         return true
     }
