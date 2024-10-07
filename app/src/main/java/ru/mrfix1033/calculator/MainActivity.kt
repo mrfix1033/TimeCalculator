@@ -1,17 +1,18 @@
 package ru.mrfix1033.calculator
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import kotlin.system.exitProcess
+import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var toolbarMain: Toolbar
 
     private lateinit var clearButton: Button
     private lateinit var exitButton: Button
@@ -30,6 +31,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setVariables()
         setClickListeners()
+
+        setSupportActionBar(toolbarMain)
+        title = resources.getString(R.string.title)
+        toolbarMain.subtitle = "1.0.0"
+        toolbarMain.setLogo(R.drawable.ic_calculate)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.clearMenuMain -> {
+                firstOperandET.text.clear()
+                secondOperandET.text.clear()
+                resultTextView.text = "Результат"
+            }
+            R.id.exitMenuMain -> finish()
+        }
+        return true
     }
 
     private fun onClickOnOperators(v: View?) {
@@ -70,6 +93,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setVariables() {
+        toolbarMain = findViewById(R.id.toolbarMain)
+
         clearButton = findViewById(R.id.clearButton)
         exitButton = findViewById(R.id.exitButton)
 
